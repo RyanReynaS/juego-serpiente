@@ -1,0 +1,180 @@
+/* =====================================================
+   ESTILOS - JUEGO DE LA SERPIENTE
+   INDICE:
+   0. Colores (variables)  <-- CAMBIAR COLORES AQUI
+   1. Reset y pagina (body)
+   2. Contenedor, titulo y descripcion
+   3. Panel de informacion (puntaje / estado)
+   4. Canvas                <-- fondo y borde del canvas
+   5. Botones (controles y acciones)
+   6. Mensaje
+   7. Responsive (celular)
+   ===================================================== */
+
+/* 0. COLORES: si piden cambiar un color, se cambia solo aqui */
+:root {
+    --fondo-pagina-1: #1a0b2e;   /* fondo de la pagina (degradado) */
+    --fondo-pagina-2: #0b0616;
+    --fondo-contenedor: #150d26; /* caja principal */
+    --fondo-tarjeta: #21143a;    /* tarjetas de puntaje/estado */
+    --borde-tarjeta: #4c2f7a;
+    --color-principal: #a855f7;  /* morado: titulo, borde del canvas, botones */
+    --color-principal-hover: #d8b4fe;
+    --color-secundario: #f472b6; /* rosado: numeros y boton reiniciar */
+    --color-texto: #e9d5ff;
+    --color-texto-suave: #c4b5fd;
+    --fondo-canvas: #0d0820;     /* fondo del canvas */
+    --borde-canvas: #f472b6;     /* borde del canvas */
+}
+
+/* 1. RESET Y PAGINA */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    background: linear-gradient(135deg, var(--fondo-pagina-1), var(--fondo-pagina-2));
+    color: var(--color-texto);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+/* 2. CONTENEDOR, TITULO Y DESCRIPCION */
+.contenedor-juego {
+    width: 100%;
+    max-width: 720px;
+    background: var(--fondo-contenedor);
+    border-radius: 20px;
+    padding: 24px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.45);
+    text-align: center;
+}
+
+h1 {
+    margin-bottom: 10px;
+    font-size: 32px;
+    color: var(--color-principal);
+}
+
+.descripcion {
+    margin-bottom: 18px;
+    color: var(--color-texto-suave);
+    line-height: 1.5;
+}
+
+/* 3. PANEL DE INFORMACION */
+.panel-info {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 16px;
+    flex-wrap: wrap;
+}
+
+.tarjeta-info {
+    flex: 1;
+    min-width: 150px;
+    background: var(--fondo-tarjeta);
+    padding: 14px;
+    border-radius: 14px;
+    border: 1px solid var(--borde-tarjeta);
+}
+
+.tarjeta-info span {
+    display: block;
+    font-size: 14px;
+    color: var(--color-texto-suave);
+    margin-bottom: 4px;
+}
+
+.tarjeta-info strong {
+    font-size: 24px;
+    color: var(--color-secundario);
+}
+
+/* 4. CANVAS: aqui se cambia el fondo (background) y el borde (border)
+   OJO: el tamano real (width/height) se cambia en el HTML, no aqui.
+   max-width debe ser igual al width del canvas en el HTML */
+canvas {
+    width: 100%;
+    max-width: 500px;
+    background: var(--fondo-canvas);
+    border: 4px solid var(--borde-canvas);
+    border-radius: 16px;
+    display: block;
+    margin: 0 auto 20px auto;
+}
+
+/* 5. BOTONES */
+.controles {
+    display: grid;
+    grid-template-columns: repeat(3, 90px);
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 18px;
+}
+
+.controles button,
+.acciones button {
+    border: none;
+    border-radius: 12px;
+    padding: 12px 16px;
+    background: var(--color-principal);
+    color: #1e0b36;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.controles button:hover,
+.acciones button:hover {
+    transform: scale(1.05);
+    background: var(--color-principal-hover);
+}
+
+.vacio {
+    visibility: hidden; /* botones de relleno para acomodar la cruz */
+}
+
+.acciones {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.acciones .secundario {
+    background: var(--color-secundario);
+    color: #3b0a24;
+}
+
+/* 6. MENSAJE */
+.mensaje {
+    margin-top: 14px;
+    color: var(--color-texto);
+    min-height: 24px;
+    font-weight: bold;
+}
+
+/* 7. RESPONSIVE */
+@media (max-width: 520px) {
+    h1 {
+        font-size: 24px;
+    }
+
+    .controles {
+        grid-template-columns: repeat(3, 75px);
+    }
+
+    .controles button,
+    .acciones button {
+        padding: 10px;
+    }
+}
