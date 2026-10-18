@@ -103,7 +103,7 @@ h1 {
    max-width debe ser igual al width del canvas en el HTML */
 canvas {
     width: 100%;
-    max-width: 500px;
+    max-width: 600px;
     background: var(--fondo-canvas);
     border: 4px solid var(--borde-canvas);
     border-radius: 16px;
