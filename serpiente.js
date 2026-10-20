@@ -56,4 +56,26 @@ function dibujarTablero() {
 function dibujarTodo() {
   limpiarCanvas();
   dibujarTablero();
+
+  pintarParte(5, 5);   // Prueba 1
+  pintarParte(10, 2);  // Prueba 2
+  pintarParte(10, 23); // Prueba 3: Borde inferior
+  pintarParte(23, 10); // Prueba 4: Borde derecho
+  pintarParte(0, 10);  // Prueba 5: Borde izquierdo
+  pintarParte(23, 23); // Prueba 6: Esquina inferior derecha
 }
+
+// =====================================================
+// FUNCIONES Y PRUEBAS DE COORDENADAS (PASO 1)
+// =====================================================
+
+function pintarParte(lineaX, lineaY, esCabeza = false) {
+  const x = lineaX * TAMANIO_CELDA;
+  const y = lineaY * TAMANIO_CELDA;
+
+  ctx.fillStyle = esCabeza ? "#eab308" : "#ef4444";
+  ctx.fillRect(x, y, TAMANIO_CELDA, TAMANIO_CELDA);
+
+  ctx.strokeStyle = "#150d26";
+  ctx.strokeRect(x, y, TAMANIO_CELDA, TAMANIO_CELDA);
+ }
